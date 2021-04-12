@@ -12,7 +12,8 @@ public class Simulation {
 
     public void start() {
         for(Agent agent: agents) {
-            agent.start();
+            Thread thread = new Thread(agent);
+            thread.start();
         }
     }
 
