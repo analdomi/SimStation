@@ -1,8 +1,9 @@
 package simstation;
 
+import mvc.*;
 import java.util.List;
 
-public class Simulation {
+public class Simulation extends Model {
     private int clock = 0;
     private List<Agent> agents;
 
