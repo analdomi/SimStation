@@ -43,4 +43,8 @@ public class Simulation extends Model {
     public void populate() {
 
     }
+
+    public List<Agent> getAgents() {
+        return agents;
+    }
 }

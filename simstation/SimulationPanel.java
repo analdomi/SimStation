@@ -1,4 +1,4 @@
-package simstation.commands;
+package simstation;
 
 import mvc.AppFactory;
 import mvc.AppPanel;

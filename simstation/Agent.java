@@ -5,8 +5,8 @@ import mvc.*;
 public abstract class Agent extends Bean implements Runnable{
     private String name;
     private Heading heading;
-    private int xc;
-    private int yc;
+    public int xc;
+    public int yc;
     private AgentState state;
 
     public void run() {
