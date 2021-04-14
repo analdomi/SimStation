@@ -25,10 +25,10 @@ public class Simulation extends Model {
     }
 
     public synchronized void suspend() {
-        stopTimer();
         for(Agent agent: agents) {
             agent.suspend();
         }
+        stopTimer();
     }
 
     public synchronized void resume() {
@@ -85,7 +85,7 @@ public class Simulation extends Model {
 
     public synchronized void addAgent(Agent a){
         agents.add(a);
-        //a.setWorld(this); not sure what this does but prof says very important
+        //a.setWorld(this); //not sure what this does but prof says very important
     }
 
     public synchronized void removeAgent(Agent a ){
