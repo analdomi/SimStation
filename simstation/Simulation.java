@@ -17,7 +17,7 @@ public class Simulation extends Model {
         agents = new LinkedList<Agent>();
         clock = 0;
         populate();
-        //startTimer();
+        startTimer();
         for(Agent agent: agents) {
             Thread thread = new Thread(agent);
             thread.start();
@@ -25,24 +25,24 @@ public class Simulation extends Model {
     }
 
     public synchronized void suspend() {
+        stopTimer();
         for(Agent agent: agents) {
             agent.suspend();
         }
-        //stopTimer();
     }
 
     public synchronized void resume() {
+        startTimer();
         for(Agent agent: agents) {
             agent.resume();
         }
-        //startTimer();
     }
 
     public synchronized void stop() {
+        stopTimer();
         for(Agent agent: agents) {
             agent.stop();
         }
-        //stopTimer();
     }
 
     public synchronized int getClock(){
