@@ -3,11 +3,11 @@ package simstation;
 import mvc.*;
 
 public abstract class Agent extends Bean implements Runnable{
-    private String name;
-    private Heading heading;
+    public String name;
+    public Heading heading;
     public int xc;
     public int yc;
-    private AgentState state;
+    public AgentState state;
 
     public void run() {
         state = AgentState.RUNNING;
