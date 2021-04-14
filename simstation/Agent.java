@@ -14,21 +14,27 @@ public abstract class Agent extends Bean implements Runnable{
         update();
     }
 
-    public void start() {
+    public synchronized void start() {
         state = AgentState.READY;
     }
 
-    public void suspend() {
+    public synchronized void suspend() {
         state = AgentState.SUSPENDED;
     }
 
-    public void resume() {
+    public synchronized void resume() {
         state = AgentState.READY;
     }
 
-    public void stop() {
+    public synchronized void stop() {
         state = AgentState.STOPPED;
    }
+
+    public int distance(Agent a){
+        int distance = 0;
+
+        return distance;
+    }
 
     public void move(int steps) {
         if(heading.equals("NORTH")){

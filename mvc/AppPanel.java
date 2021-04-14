@@ -44,7 +44,7 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle(factory.getTitle());
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-
+        frame.setLocationRelativeTo(null);
 
     }
 
