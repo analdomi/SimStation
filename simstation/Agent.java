@@ -7,27 +7,27 @@ public abstract class Agent extends Bean implements Runnable{
     public Heading heading;
     public int xc;
     public int yc;
-    public AgentState state;
+    public boolean suspended;
+    public boolean stopped;
+    public Thread myThread;
 
     public void run() {
-        state = AgentState.RUNNING;
         update();
     }
 
     public synchronized void start() {
-        state = AgentState.READY;
     }
 
     public synchronized void suspend() {
-        state = AgentState.SUSPENDED;
+        suspended = true;
     }
 
     public synchronized void resume() {
-        state = AgentState.READY;
+        suspended = false;
     }
 
     public synchronized void stop() {
-        state = AgentState.STOPPED;
+        stopped = true;
    }
 
     public int distance(Agent a){
