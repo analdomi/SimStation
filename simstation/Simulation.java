@@ -44,6 +44,10 @@ public class Simulation extends Model {
 
     }
 
+    public void addAgent(Agent a){
+        agents.add(a);
+    }
+
     public List<Agent> getAgents() {
         return agents;
     }
