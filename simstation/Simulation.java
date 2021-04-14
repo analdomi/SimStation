@@ -49,7 +49,6 @@ public class Simulation extends Model {
         return  clock;
     }
 
-    /*
     public synchronized void incClock(){
         clock++;
     }
@@ -63,7 +62,7 @@ public class Simulation extends Model {
         timer.cancel();
         timer.purge();
     }
-    */
+
     public synchronized Agent getNeighbor(Agent asker, double radius) {
         Agent neighbor = null;
         boolean found = false;
@@ -86,6 +85,7 @@ public class Simulation extends Model {
 
     public synchronized void addAgent(Agent a){
         agents.add(a);
+        //a.setWorld(this); not sure what this does but prof says very important
     }
 
     public synchronized void removeAgent(Agent a ){
@@ -102,5 +102,11 @@ public class Simulation extends Model {
         stats[0] = "#agents = " + agents.size();
         stats[1] = "clock = " + this.getClock();
         return stats;
+    }
+
+    private class ClockUpdater extends TimerTask {
+        public void run(){
+            incClock();
+        }
     }
 }
