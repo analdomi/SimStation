@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Simulation extends Model {
     protected int clock;
-    private List<Agent> agents;
+    protected List<Agent> agents;
     private Timer timer;
 
     public Simulation() {
