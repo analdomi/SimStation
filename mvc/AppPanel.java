@@ -19,7 +19,7 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
     public static int FRAME_HEIGHT = 300;
 
     public AppPanel(AppFactory factory) {
-        super();
+        //super();
         this.factory = factory;
         model = factory.makeModel();
         controlPanel = new JPanel();
@@ -103,14 +103,15 @@ public class AppPanel extends JPanel implements PropertyChangeListener, ActionLi
         } catch(Exception e) {
             handleException(e);
         }
+        //repaint();
+        //revalidate();
     }
 
     protected void handleException(Exception e) {
         Utilities.error(e);
     }
 
-    public void propertyChange(PropertyChangeEvent event) {
-    }
+    public void propertyChange(PropertyChangeEvent event) {}
 
     public Model getModel() {
         return model;

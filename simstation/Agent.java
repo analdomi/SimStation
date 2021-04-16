@@ -3,31 +3,60 @@ package simstation;
 import mvc.*;
 
 public abstract class Agent extends Bean implements Runnable{
-    public String name;
+    //public String name;
     public Heading heading;
     public int xc;
     public int yc;
     public boolean suspended;
     public boolean stopped;
     public Thread myThread;
+    private Simulation world;
 
-    public void run() {
-        update();
+    public Agent(){
+        suspended = false;
+        stopped = false;
+        myThread = null;
+        xc = 100;
+        yc = 100;
     }
 
-    public synchronized void start() {
+    public void run() {
+        myThread = Thread.currentThread();
+        while(!stopped){
+            try{
+                update();
+                Thread.sleep(20);
+                checkSuspended();
+            } catch (InterruptedException e){
+                System.out.println(e);
+            }
+        }
+    }
+
+    private synchronized void checkSuspended() {
+        try {
+            while(!stopped && suspended) {
+                wait();
+                suspended = false;
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
     }
 
     public synchronized void suspend() {
         suspended = true;
+        update();
     }
 
     public synchronized void resume() {
         suspended = false;
+        notify();
     }
 
     public synchronized void stop() {
         stopped = true;
+        update();
    }
 
     public int distance(Agent a){
@@ -36,19 +65,25 @@ public abstract class Agent extends Bean implements Runnable{
         return distance;
     }
 
+    public void setWorld(Simulation s){
+        world = s;
+    }
+
     public void move(int steps) {
-        if(heading.equals("NORTH")){
+        if(heading == Heading.NORTH){
             yc -= steps;
         }
-        else if(heading.equals("SOUTH")){
+        else if(heading == Heading.SOUTH){
             yc += steps;
         }
-        else if(heading.equals("EAST")){
+        else if(heading == Heading.EAST){
             xc += steps;
         }
-        else if(heading.equals("WEST")){
+        else if(heading == Heading.WEST){
             xc -= steps;
         }
+        world.changed();
     }
+
     public abstract void update();
 }
