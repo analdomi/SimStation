@@ -7,6 +7,7 @@ public class Simulation extends Model {
     protected int clock;
     protected List<Agent> agents;
     private Timer timer;
+    public static int SIZE = 250;
 
     public Simulation() {
         agents = new LinkedList<Agent>();
@@ -78,7 +79,7 @@ public class Simulation extends Model {
                 if(i == start) break;
             }
         }
-        return  neighbor;
+        return neighbor;
     }
 
     public void populate(){}

@@ -16,7 +16,7 @@ public class SimulationView extends View {
 
         for(Agent agent: simulation.getAgents()) {
             gc.setColor(Color.yellow);
-            gc.fillOval(agent.xc, agent.yc, 4, 4);
+            gc.fillOval(agent.x, agent.y, 4, 4);
         }
 
         gc.setColor(oldColor);

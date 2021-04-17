@@ -14,13 +14,13 @@ class Bird extends Agent {
     }
 
     public void update() {
-        Bird neighbor = (Bird)this.world.getNeighbor(this, 1);
-        heading = neighbor.heading;
-        speed = neighbor.speed;
+        Bird neighbor = (Bird)world.getNeighbor(this, 30);
+        if(neighbor != null){
+            heading = neighbor.heading;
+            speed = neighbor.speed;
+        }
         move(speed);
     }
-
-
 }
 
 
@@ -34,8 +34,6 @@ public class FlockingSimulation extends Simulation {
     public void populate() {
         for(int i = 0; i < 15; i++){
             Bird newBird = new Bird();
-//            newBird.xc = Utilities.rng.nextInt(100) - 50;
-//            newBird.yc = Utilities.rng.nextInt(100) - 50;
             addAgent(newBird);
         }
     }
