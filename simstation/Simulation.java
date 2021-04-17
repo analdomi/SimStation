@@ -10,12 +10,12 @@ public class Simulation extends Model {
     public static int SIZE = 250;
 
     public Simulation() {
-        agents = new LinkedList<Agent>();
+        agents = new LinkedList<>();
         clock = 0;
     }
 
     public void start() {
-        agents = new LinkedList<Agent>();
+        agents = new LinkedList<>();
         clock = 0;
         populate();
         startTimer();

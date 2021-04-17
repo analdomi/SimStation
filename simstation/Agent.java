@@ -1,6 +1,7 @@
 package simstation;
 
 import mvc.*;
+import java.awt.*;
 
 public abstract class Agent extends Bean implements Runnable{
 
@@ -9,11 +10,13 @@ public abstract class Agent extends Bean implements Runnable{
     public boolean suspended, stopped;
     public Thread myThread;
     protected Simulation world;
+    private Color agentColor;
 
     public Agent(){
         suspended = false;
         stopped = false;
         myThread = null;
+        agentColor = Color.yellow;
         x = Utilities.rng.nextInt(world.SIZE);
         y = Utilities.rng.nextInt(world.SIZE);
     }
@@ -36,7 +39,6 @@ public abstract class Agent extends Bean implements Runnable{
             while(!stopped && suspended) {
                 wait();
                 suspended = false;
-                stopped = false;
             }
         } catch (InterruptedException e) {
             System.out.println(e);
@@ -48,7 +50,6 @@ public abstract class Agent extends Bean implements Runnable{
     }
 
     public synchronized void resume() {
-        stopped = false;
         notify();
     }
 
@@ -64,11 +65,8 @@ public abstract class Agent extends Bean implements Runnable{
         return y;
     }
 
-    public Heading getHeading(){
-        return heading;
-    }
 
-    public int distance(Agent a){ //Need to finish this
+    public int distance(Agent a){
         int distance = (int)(Math.sqrt((a.getY() - y) * (a.getY() - y) + (a.getX() - x) * (a.getX() - x)));
         return distance;
     }
@@ -99,11 +97,19 @@ public abstract class Agent extends Bean implements Runnable{
         }
         else if(heading == Heading.WEST){
             x -= steps;
-            if(x <= world.SIZE){
+            if(x <= 0){
                 x += world.SIZE;
             }
         }
         world.changed();
+    }
+
+    public Color getAgentColor() {
+        return agentColor;
+    }
+
+    public void setAgentColor(Color agentColor) {
+        this.agentColor = agentColor;
     }
 
     public abstract void update();

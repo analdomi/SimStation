@@ -17,7 +17,6 @@ class Drunk extends Agent {
         int steps = Utilities.rng.nextInt(10) + 1;
         move(steps);
     }
-
 }
 
 
