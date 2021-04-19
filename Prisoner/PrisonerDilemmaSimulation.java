@@ -3,6 +3,8 @@ package Prisoner;
 import mvc.*;
 import simstation.*;
 
+import java.io.Serializable;
+
 interface Behavior extends Serializable {
     boolean cooperate(Prisoner p);
 }
@@ -38,7 +40,7 @@ class Prisoner extends Agent {
     Behavior behavior;
     int fitness;
     int strategy;
-    boolean cheated; //if prisoner has been cheated before
+    boolean cheated; //if prisoner has been cheated previously
     public Prisoner() {
         super();
         fitness = 0;
@@ -128,10 +130,10 @@ public class PrisonerDilemmaSimulation extends Simulation {
         }
         String[] stats = new String[5];
         stats[0] = "clock = " + this.getClock();
-        stats[1] = "Avg Fitness of Cooperate = " + avgFitness[0] / (double)(Prisoners/4);
-        stats[2] = "Avg Fitness of RandomCooperate = " + avgFitness[1] / (double)(Prisoners/4);
-        stats[3] = "Avg Fitness of Cheat = " + avgFitness[2] / (double)(Prisoners/4);
-        stats[4] = "Avg Fitness of Tit4Tat = " + avgFitness[3] / (double)(Prisoners/4);
+        stats[1] = "Avg Fitness of Cooperate = " + avgFitness[0] / (Prisoners/4);
+        stats[2] = "Avg Fitness of RandomCooperate = " + avgFitness[1] / (Prisoners/4);
+        stats[3] = "Avg Fitness of Cheat = " + avgFitness[2] / (Prisoners/4);
+        stats[4] = "Avg Fitness of Tit4Tat = " + avgFitness[3] / (Prisoners/4);
         return stats;
     }
 
