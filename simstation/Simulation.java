@@ -33,8 +33,11 @@ public class Simulation extends Model {
     }
 
     public synchronized void resume() {
+        stopTimer();
         startTimer();
         for(Agent agent: agents) {
+            Thread thread = new Thread(agent);
+            thread.start();
             agent.resume();
         }
     }
