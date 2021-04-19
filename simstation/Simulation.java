@@ -25,6 +25,13 @@ public class Simulation extends Model {
         }
     }
 
+    public boolean getAgentSuspended(){
+        for(Agent each : agents){
+            return each.suspended;
+        }
+        return false;
+    }
+
     public synchronized void suspend() {
         for(Agent agent: agents) {
             agent.suspend();
@@ -33,11 +40,10 @@ public class Simulation extends Model {
     }
 
     public synchronized void resume() {
-        stopTimer();
         startTimer();
         for(Agent agent: agents) {
-            Thread thread = new Thread(agent);
-            thread.start();
+//            Thread thread = new Thread(agent);
+//            thread.start();
             agent.resume();
         }
     }
@@ -93,6 +99,7 @@ public class Simulation extends Model {
     }
 
     public synchronized void removeAgent(Agent a ){
+        a.setWorld(null);
         agents.remove(a);
         a.stop();
     }

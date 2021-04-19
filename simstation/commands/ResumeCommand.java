@@ -10,7 +10,9 @@ public class ResumeCommand extends Command {
     public void execute() {
         Simulation simulation = (Simulation) model;
 
-        simulation.resume();
-        simulation.changed();
+        if(simulation.getAgentSuspended()){
+            simulation.resume();
+            simulation.changed();
+        }
     }
 }
