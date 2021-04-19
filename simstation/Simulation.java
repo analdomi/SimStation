@@ -6,7 +6,7 @@ import java.util.*;
 public class Simulation extends Model {
     protected int clock;
     protected List<Agent> agents;
-    private Timer timer;
+    private transient Timer timer;
     public static int SIZE = 250;
 
     public Simulation() {
@@ -86,7 +86,7 @@ public class Simulation extends Model {
 
     public synchronized void addAgent(Agent a){
         agents.add(a);
-        a.setWorld(this); //not sure what this does but prof says very important
+        a.setWorld(this);
     }
 
     public synchronized void removeAgent(Agent a ){

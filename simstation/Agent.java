@@ -3,12 +3,12 @@ package simstation;
 import mvc.*;
 import java.awt.*;
 
-public abstract class Agent extends Bean implements Runnable{
+public abstract class Agent extends Bean implements Runnable {
 
     public Heading heading;
     public int x, y;
     public boolean suspended, stopped;
-    public Thread myThread;
+    public transient Thread myThread;
     protected Simulation world;
     protected Color agentColor;
 
@@ -103,11 +103,6 @@ public abstract class Agent extends Bean implements Runnable{
         }
         world.changed();
     }
-
-    public Color getAgentColor() {
-        return agentColor;
-    }
-
     public void setAgentColor(Color agentColor) {
         this.agentColor = agentColor;
     }
