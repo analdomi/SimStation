@@ -3,7 +3,7 @@ package Prisoner;
 import mvc.*;
 import simstation.*;
 
-interface Behavior {
+interface Behavior extends Serializable {
     boolean cooperate(Prisoner p);
 }
 
