@@ -10,7 +10,7 @@ public abstract class Agent extends Bean implements Runnable{
     public boolean suspended, stopped;
     public Thread myThread;
     protected Simulation world;
-    private Color agentColor;
+    protected Color agentColor;
 
     public Agent(){
         suspended = false;
