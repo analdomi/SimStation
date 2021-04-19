@@ -1,4 +1,4 @@
-package plauge;
+package plague;
 
 import mvc.*;
 import simstation.*;
